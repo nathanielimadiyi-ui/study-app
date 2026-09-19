@@ -1,0 +1,198 @@
+@import "tailwindcss";
+
+@theme {
+  --font-roboto: "Roboto", system-ui, -apple-system, sans-serif;
+  --color-app-bg: #14151D;
+  --color-app-card: #1D1F2A;
+  --color-app-card-hover: #242738;
+  --color-app-nav: #1D1F2A;
+  --color-app-elevated: #242738;
+  --color-app-border: #2F3142;
+  --color-app-text: #F4F5FA;
+  --color-app-muted: #8B90A5;
+  --color-app-faint: #6E7388;
+  --color-app-divider: #ffffff14;
+}
+
+html, body {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+  background: #14151D;
+  font-family: var(--font-roboto);
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  overscroll-behavior-y: none;
+}
+
+#root {
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+body {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+button, input, select, textarea {
+  font: inherit;
+}
+
+button {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Ensure mobile Safari and Chrome don't zoom in on input focus */
+@media screen and (max-width: 768px) {
+  input[type="text"],
+  input[type="number"],
+  input[type="email"],
+  input[type="search"],
+  input[type="url"],
+  textarea,
+  select {
+    font-size: 16px !important;
+  }
+}
+
+/* Keep the application clear of notches while allowing the content plane to fill
+   the changing iOS/Android browser viewport. */
+.app-shell {
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  min-height: 100svh;
+}
+
+.app-header {
+  height: calc(60px + env(safe-area-inset-top, 0px));
+  padding-top: env(safe-area-inset-top, 0px);
+}
+
+.app-bottom-nav {
+  min-height: calc(64px + env(safe-area-inset-bottom, 0px));
+  padding-bottom: max(env(safe-area-inset-bottom, 0px), 8px);
+}
+
+.chat-composer {
+  padding-bottom: max(env(safe-area-inset-bottom, 0px), 0px);
+}
+
+@media (max-width: 370px) {
+  .studio-list {
+    gap: 8px;
+  }
+  .studio-action {
+    height: 68px;
+    padding-inline: 20px;
+    gap: 16px;
+  }
+}
+
+/* Compact vertical rhythm on shorter phones and in landscape. */
+@media (max-height: 720px) {
+  .studio-screen {
+    padding-top: 14px;
+  }
+  .studio-list {
+    margin-top: 12px;
+    gap: 8px;
+  }
+  .studio-action {
+    height: 64px;
+  }
+  .studio-empty {
+    margin-top: 48px;
+  }
+  .chat-summary-actions {
+    margin-top: 24px;
+  }
+  .chat-audio-action {
+    margin-top: 28px;
+  }
+}
+
+@media (orientation: landscape) and (max-height: 520px) {
+  .app-header {
+    height: calc(54px + env(safe-area-inset-top));
+  }
+  .app-bottom-nav {
+    min-height: calc(58px + env(safe-area-inset-bottom));
+  }
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* equalizer bars for the playing audio card */
+@keyframes eq-bounce {
+  0%,
+  100% {
+    transform: scaleY(0.3);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+
+.eq-bar {
+  transform-origin: center;
+  animation: eq-bounce 0.9s ease-in-out infinite;
+}
+
+@keyframes sheet-up {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+.sheet-up {
+  animation: sheet-up 0.32s cubic-bezier(0.32, 0.72, 0.24, 1);
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.fade-in {
+  animation: fade-in 0.2s ease-out;
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.rise-in {
+  animation: rise-in 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-6px); }
+  40%, 80% { transform: translateX(6px); }
+}
+.animate-shake {
+  animation: shake 0.35s ease-in-out;
+}
