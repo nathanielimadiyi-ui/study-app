@@ -1,0 +1,6 @@
+{
+  "name": "Untitled Notebook",
+  "description": "NotebookLM mobile companion with sources, chat, and studio output generation.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
